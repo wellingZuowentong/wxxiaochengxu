@@ -2,6 +2,7 @@ package wx.wxceshi.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import wx.wxceshi.bean.FeiPin;
 import wx.wxceshi.bean.FeiPinZH;
 import wx.wxceshi.mapper.FeiPinMapper;
 import wx.wxceshi.mapper.FeiPinZHMapper;
@@ -18,5 +19,8 @@ public class FeiPinZHService {
     private FeiPinZHMapper feiPinZHMapper;
     public List<FeiPinZH> findFeiPinZHByName(String name){
         return feiPinZHMapper.findFeiPinZHByName(name);
+    }
+    public FeiPinZH findFeiPinZH(String name){
+        return feiPinZHMapper.findFeiPinZH(name);
     }
 }

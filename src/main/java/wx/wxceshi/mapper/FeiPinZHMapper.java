@@ -1,6 +1,7 @@
 package wx.wxceshi.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import wx.wxceshi.bean.FeiPin;
 import wx.wxceshi.bean.FeiPinZH;
 
 import java.util.List;
@@ -12,4 +13,5 @@ import java.util.List;
 @Mapper
 public interface FeiPinZHMapper {
     public List<FeiPinZH> findFeiPinZHByName(String name);
+    public FeiPinZH findFeiPinZH(String name);
 }
