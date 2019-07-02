@@ -2,33 +2,33 @@
 <!DOCTYPE mapper PUBLIC
         "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="wx.wxceshi.mapper.UserMapper">
+<mapper namespace="wx.wxceshi.mapper.FeiPinMapper">
     <sql id="uu">
-        id,name,gender,age,school,phone,salary
+        id,name,neirong,address,lid
     </sql>
 
-    <!--查询所有用户-->
-    <select id="findAllUser" resultType="wx.wxceshi.bean.User">
-        select <include refid="uu" /> from user
+    <!--查询所有废品-->
+    <select id="findAllFeiPin" resultType="wx.wxceshi.bean.FeiPin">
+        select <include refid="uu" /> from feipin
     </select>
 
-    <!--新增用户信息-->
-    <insert id="saveUser" parameterType="wx.wxceshi.bean.User">
-        insert into user(<include refid="uu" />)values(#{id},#{name},#{gender},#{age},#{school},#{phone},#{salary})
+    <!--新增废品信息-->
+    <insert id="saveFeiPin" parameterType="wx.wxceshi.bean.FeiPin">
+        insert into feipin(<include refid="uu" />)values(#{id},#{name},#{neirong},#{address},#{lid})
     </insert>
 
-    <!--根据id查询用户信息-->
-    <select id="findUserById" resultType="wx.wxceshi.bean.User">
-        select <include refid="uu"/> from user where id=#{value}
+    <!--根据id查询废品信息-->
+    <select id="findFeiPinById" resultType="wx.wxceshi.bean.FeiPin">
+        select <include refid="uu"/> from feipin where id=#{value}
     </select>
 
-    <!--根据id删除用户-->
-    <delete id="delUserById">
-        delete from user where id=#{value}
+    <!--根据id删除废品-->
+    <delete id="delFeiPinById">
+        delete from feipin where id=#{value}
     </delete>
 
-    <!--根据Id修改用户信息-->
-    <update id="updateUserById" parameterType="wx.wxceshi.bean.User">
-        update user set name=#{name},gender=#{gender},age=#{age},school=#{school},phone=#{phone},salary=#{salary} where id=#{id}
+    <!--根据Id修改废品信息-->
+    <update id="updateFeiPinById" parameterType="wx.wxceshi.bean.FeiPin">
+        update feipin set name=#{name},neirong=#{neirong} address=#{address},lid=#{lid} where id=#{id}
     </update>
 </mapper>

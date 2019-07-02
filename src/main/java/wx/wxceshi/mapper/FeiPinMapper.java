@@ -1,7 +1,7 @@
 package wx.wxceshi.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import wx.wxceshi.bean.User;
+import wx.wxceshi.bean.FeiPin;
 
 import java.util.List;
 
@@ -10,10 +10,10 @@ import java.util.List;
  * 日期：2019/7/1
  */
 @Mapper
-public interface UserMapper {
-    public int saveUser(User user);
-    public List<User> findAllUser();
-    public User findUserById(Integer id);
-    public Integer delUserById(Integer id);
-    public Integer updateUserById(User user);
+public interface FeiPinMapper {
+    public int saveFeiPin(FeiPin feiPin);
+    public List<FeiPin> findAllFeiPin();
+    public FeiPin findFeiPinById(Integer id);
+    public Integer delFeiPinById(Integer id);
+    public Integer updateFeiPinById(FeiPin feiPin);
 }

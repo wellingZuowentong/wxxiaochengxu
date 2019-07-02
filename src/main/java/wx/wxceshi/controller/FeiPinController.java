@@ -1,12 +1,11 @@
 package wx.wxceshi.controller;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import wx.wxceshi.bean.User;
-import wx.wxceshi.service.UserService;
+import wx.wxceshi.bean.FeiPin;
+import wx.wxceshi.service.FeiPinService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,13 +18,13 @@ import java.util.List;
  * 日期：2019/7/1
  */
 @Controller
-public class UserController {
+public class FeiPinController {
     @Autowired
-    private UserService userService;
+    private FeiPinService feiPinService;
 
-    @RequestMapping("saveUser")
+    @RequestMapping("saveFeiPin")
     @ResponseBody
-    public int saveUser(HttpServletRequest request, HttpServletResponse response, User user) throws ServletException, IOException {
+    public int saveFeiPin(HttpServletRequest request, HttpServletResponse response,FeiPin feiPin) throws ServletException, IOException {
         // TODO Auto-generated method stub
 
         response.setContentType("text/html;charset=utf-8");
@@ -40,13 +39,13 @@ public class UserController {
 
         //返回值给微信小程序
 
-           return userService.saveUser(user);
+        return feiPinService.saveFeiPin(feiPin);
 
 
     }
-    @RequestMapping("delUserById")
+    @RequestMapping("delFeiPinById")
     @ResponseBody
-    public int delUserById(HttpServletRequest request, HttpServletResponse response,Integer id) throws ServletException, IOException {
+    public int delFeiPinById(HttpServletRequest request, HttpServletResponse response,Integer id) throws ServletException, IOException {
         // TODO Auto-generated method stub
 
         response.setContentType("text/html;charset=utf-8");
@@ -61,13 +60,13 @@ public class UserController {
 
         //返回值给微信小程序
 
-        return userService.delUserById(1);
+        return feiPinService.delFeiPinById(id);
 
 
     }
-    @RequestMapping("findAllUser")
+    @RequestMapping("findAllFeiPin")
     @ResponseBody
-    public List<User> findAllUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public List<FeiPin> findAllFeiPin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
 
         response.setContentType("text/html;charset=utf-8");
@@ -82,11 +81,11 @@ public class UserController {
 
         //返回值给微信小程序
 
-        return userService.findAllUser();
+        return feiPinService.findAllFeiPin();
     }
-    @RequestMapping("updateUserById")
+    @RequestMapping("updateFeiPinById")
     @ResponseBody
-    public int updateUserById(HttpServletRequest request, HttpServletResponse response,User user) throws ServletException, IOException {
+    public int updateFeiPinById(HttpServletRequest request, HttpServletResponse response,FeiPin feiPin) throws ServletException, IOException {
         // TODO Auto-generated method stub
 
         response.setContentType("text/html;charset=utf-8");
@@ -100,9 +99,8 @@ public class UserController {
         //System.out.println("username=" + username + " ,password=" + password);
 
         //返回值给微信小程序
-        System.out.println(user);
 
-        return userService.updateUserById(user);
+        return feiPinService.updateFeiPinById(feiPin);
 
 
     }

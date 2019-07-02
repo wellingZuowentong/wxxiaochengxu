@@ -2,33 +2,33 @@
 <!DOCTYPE mapper PUBLIC
         "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="wx.wxceshi.mapper.FeiPinMapper">
+<mapper namespace="wx.wxceshi.mapper.LaJiMapper">
     <sql id="uu">
-        id,name,neirong,address,lid
+        id,name,miaoshu,baokuo,chuli,paddress
     </sql>
 
-    <!--查询所有废品-->
-    <select id="findAllFeiPin" resultType="wx.wxceshi.bean.FeiPin">
-        select <include refid="uu" /> from feipin
+    <!--查询所有垃圾-->
+    <select id="findAllLaJi" resultType="wx.wxceshi.bean.LaJi">
+        select <include refid="uu" /> from laji
     </select>
 
-    <!--新增废品信息-->
-    <insert id="saveFeiPin" parameterType="wx.wxceshi.bean.FeiPin">
-        insert into feipin(<include refid="uu" />)values(#{id},#{name},#{neirong},#{address},#{lid})
+    <!--新增垃圾信息-->
+    <insert id="saveLaJi" parameterType="wx.wxceshi.bean.LaJi">
+        insert into laji(<include refid="uu" />)values(#{id},#{name},#{miaoshu},#{baokuo},#{chuli},#{paddress})
     </insert>
 
-    <!--根据id查询废品信息-->
-    <select id="findFeiPinById" resultType="wx.wxceshi.bean.FeiPin">
-        select <include refid="uu"/> from feipin where id=#{value}
+    <!--根据id查询垃圾信息-->
+    <select id="findLaJiById" resultType="wx.wxceshi.bean.LaJi">
+        select <include refid="uu"/> from laji where id=#{value}
     </select>
 
-    <!--根据id删除废品-->
-    <delete id="delFeiPinById">
-        delete from feipin where id=#{value}
+    <!--根据id删除垃圾-->
+    <delete id="delLaJiById">
+        delete from laji where id=#{value}
     </delete>
 
     <!--根据Id修改废品信息-->
-    <update id="updateFeiPinById" parameterType="wx.wxceshi.bean.FeiPin">
-        update feipin set name=#{name},neirong=#{neirong} address=#{address},lid=#{lid} where id=#{id}
+    <update id="updateLaJiById" parameterType="wx.wxceshi.bean.LaJi">
+        update laji set name=#{name},miaoshu=#{miaoshu},baokuo=#{baokuo},chuli=#{chuli},paddress=#{paddress} where id=#{id}
     </update>
 </mapper>

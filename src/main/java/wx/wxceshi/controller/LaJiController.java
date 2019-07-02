@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import wx.wxceshi.bean.FeiPin;
-import wx.wxceshi.service.FeiPinService;
+import wx.wxceshi.bean.LaJi;
+import wx.wxceshi.service.LaJiService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,13 +18,13 @@ import java.util.List;
  * 日期：2019/7/1
  */
 @Controller
-public class FeiPinController {
+public class LaJiController {
     @Autowired
-    private FeiPinService feiPinService;
+    private LaJiService laJiService;
 
-    @RequestMapping("saveFeiPin")
+    @RequestMapping("saveLaJi")
     @ResponseBody
-    public int saveFeiPin(HttpServletRequest request, HttpServletResponse response,FeiPin feiPin) throws ServletException, IOException {
+    public int saveLaJi(HttpServletRequest request, HttpServletResponse response,LaJi laJi) throws ServletException, IOException {
         // TODO Auto-generated method stub
 
         response.setContentType("text/html;charset=utf-8");
@@ -39,13 +39,13 @@ public class FeiPinController {
 
         //返回值给微信小程序
 
-        return feiPinService.saveFeiPin(feiPin);
+        return laJiService.saveLaJi(laJi);
 
 
     }
-    @RequestMapping("delFeiPinById")
+    @RequestMapping("delLaJiById")
     @ResponseBody
-    public int delFeiPinById(HttpServletRequest request, HttpServletResponse response,Integer id) throws ServletException, IOException {
+    public int delLaJiById(HttpServletRequest request, HttpServletResponse response,Integer id) throws ServletException, IOException {
         // TODO Auto-generated method stub
 
         response.setContentType("text/html;charset=utf-8");
@@ -60,13 +60,13 @@ public class FeiPinController {
 
         //返回值给微信小程序
 
-        return feiPinService.delFeiPinById(id);
+        return laJiService.delLaJiById(id);
 
 
     }
-    @RequestMapping("findAllFeiPin")
+    @RequestMapping("findAllLaJi")
     @ResponseBody
-    public List<FeiPin> findAllFeiPin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public List<LaJi> findAllLaJi(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
 
         response.setContentType("text/html;charset=utf-8");
@@ -81,11 +81,11 @@ public class FeiPinController {
 
         //返回值给微信小程序
 
-        return feiPinService.findAllFeiPin();
+        return laJiService.findAllLaJi();
     }
-    @RequestMapping("updateFeiPinById")
+    @RequestMapping("updateLaJiById")
     @ResponseBody
-    public int updateFeiPinById(HttpServletRequest request, HttpServletResponse response,FeiPin feiPin) throws ServletException, IOException {
+    public int updateLaJiById(HttpServletRequest request, HttpServletResponse response,LaJi laJi) throws ServletException, IOException {
         // TODO Auto-generated method stub
 
         response.setContentType("text/html;charset=utf-8");
@@ -100,7 +100,7 @@ public class FeiPinController {
 
         //返回值给微信小程序
 
-        return feiPinService.updateFeiPinById(feiPin);
+        return laJiService.updateLaJiById(laJi);
 
 
     }

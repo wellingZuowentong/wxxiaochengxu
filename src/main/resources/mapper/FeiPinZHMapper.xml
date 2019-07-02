@@ -2,33 +2,33 @@
 <!DOCTYPE mapper PUBLIC
         "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="wx.wxceshi.mapper.FeiPinMapper">
-    <sql id="uu">
-        id,name,neirong,address,lid
-    </sql>
+<mapper namespace="wx.wxceshi.mapper.FeiPinZHMapper">
 
-    <!--查询所有废品-->
-    <select id="findAllFeiPin" resultType="wx.wxceshi.bean.FeiPin">
-        select <include refid="uu" /> from feipin
+    <resultMap id="map" type="wx.wxceshi.bean.FeiPinZH">
+        <id column="f_id" property="id"/>
+        <result column="f_name" property="name"/>
+        <result column="f_neirong" property="neirong"/>
+        <result column="f_address" property="address"/>
+        <association property="laJi" javaType="wx.wxceshi.bean.LaJi">
+            <id column="l_id" property="id"/>
+            <result column="l_name" property="name"/>
+            <result column="l_miaoshu" property="miaoshu"/>
+            <result column="l_baokuo" property="baokuo"/>
+            <result column="l_chuli" property="chuli"/>
+            <result column="l_paddress" property="paddress"/>
+        </association>
+    </resultMap>
+
+
+    <!--根据名字查询废品及其所属垃圾-->
+    <select id="findFeiPinZHByName" resultMap="map">
+      select
+      f.id f_id,f.name f_name,f.neirong f_neirong,f.address f_address,f.lid f_lid,
+      l.id l_id,l.name l_name,l.miaoshu l_miaoshu,l.baokuo l_baokuo,l.chuli l_chuli,l.paddress l_paddress
+      from feipin f left join laji l on f.lid=l.id
+      <where>
+          f.name like '%${value}%'
+      </where>
     </select>
 
-    <!--新增废品信息-->
-    <insert id="saveFeiPin" parameterType="wx.wxceshi.bean.FeiPin">
-        insert into feipin(<include refid="uu" />)values(#{id},#{name},#{neirong},#{address},#{lid})
-    </insert>
-
-    <!--根据id查询废品信息-->
-    <select id="findFeiPinById" resultType="wx.wxceshi.bean.FeiPin">
-        select <include refid="uu"/> from feipin where id=#{value}
-    </select>
-
-    <!--根据id删除废品-->
-    <delete id="delFeiPinById">
-        delete from feipin where id=#{value}
-    </delete>
-
-    <!--根据Id修改废品信息-->
-    <update id="updateFeiPinById" parameterType="wx.wxceshi.bean.FeiPin">
-        update feipin set name=#{name},neirong=#{neirong} address=#{address},lid=#{lid} where id=#{id}
-    </update>
 </mapper>
